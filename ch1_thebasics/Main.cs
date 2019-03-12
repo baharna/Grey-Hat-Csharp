@@ -1,32 +1,39 @@
-public class PoliceOfficer : PublicServant, IPerson
+using System;
+namespace ch1_thebasics
 {
-    private bool _hasEmergency;
-
-    public PoliceOfficer(string name, int age)
+    public class MainClass
     {
-        this.Name = name;
-        this.Age = age;
-        _hasEmergency = false;
+        public static void Main(string[] args)
+        {
+            Firefighter firefighter = new Firefighter("Joe Carrington", 35);
+            firefighter.PensionAmount = 5000;
+
+            PrintNameAndAge(firefighter);
+            PrintPensionAmount(firefighter);
+
+            firefighter.DriveToPlaceOfInterest();
+
+            PoliceOfficer officer = new PoliceOfficer("Jane Hope", 32);
+            officer.PensionAmount = 5500;
+            officer.HasEmergency = true;
+
+            PrintNameAndAge(officer);
+            PrintPensionAmount(officer);
+
+            officer.DriveToPlaceOfInterest();
+
+        }
+        static void PrintNameAndAge(IPerson person)
+        {
+            Console.WriteLine("Name: " + person.Name);
+            Console.WriteLine("Age: " + person.Age);
+        }
+        static void PrintPensionAmount(PublicServant servant)
+        {
+            if (servant is Firefighter)
+                Console.WriteLine("Pension of firefighter: " + servant.PensionAmount);
+            else if (servant is PoliceOfficer)
+                Console.WriteLine("Pension of officer: " + servant.PensionAmount);
+        }
     }
-
-    public string Name { get; set; }
-    public int Age { get; set; }
-
-    public bool HasEmergency
-    {
-        get { return _hasEmergency; }
-        set { _hasEmergency = value; }
-    }
-
-    public override void DriveToPlaceOfInterest()
-    {
-        GetInPoliceCar();
-        if (this.HasEmergency)
-            TurnOnSiren();
-        FollowDirections();
-    }
-
-    private void GetInPoliceCar() { }
-    private void TurnOnSiren() { }
-    private void FollowDirections() { }
 }
