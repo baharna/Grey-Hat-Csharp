@@ -25,7 +25,7 @@ namespace initial_fuzzer
 
                 request = (HttpWebRequest)WebRequest.Create(xssUrl);
                 request.Method = "GET";
-                string.xssresp = string.Empty;
+                string xssresp = string.Empty;
                 using (StreamReader rdr = new StreamReader(request.GetResponse().GetResponseStream()))
                     xssresp = rdr.ReadToEnd();
 
