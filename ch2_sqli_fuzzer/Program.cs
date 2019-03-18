@@ -4,7 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
-namespace post_fuzzer
+namespace ch2_sqli_fuzzer
 {
     class MainClass
     {
