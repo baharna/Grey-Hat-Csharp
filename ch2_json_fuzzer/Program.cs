@@ -35,7 +35,7 @@ namespace json_fuzzer
                         Console.WriteLine("Converting int type to string to fuzz");
 
                     JToken oldVal = pair.Value;
-                    obj[pair.Key] = pair.Value.toString() + "'";
+                    obj[pair.Key] = pair.Value.ToString() + "'";
                     if (IterateAndFuzz(url, obj.Root))
                         Console.WriteLine("SQL injection vector: " + pair.Key);
                     else
